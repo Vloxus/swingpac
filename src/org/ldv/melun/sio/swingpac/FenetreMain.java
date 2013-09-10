@@ -23,9 +23,12 @@ public class FenetreMain extends JFrame implements ActionListener {
   // une constante (mot clé final)
   // c'est un moyen très pratique d'associer un écouteur d'événement
   // à un générateur d'événement.
+	
   static final String ACTION_QUITTER = "Quitter";
 
   static final String ACTION_GO = "Go";
+  
+  static final String ACTION_PAUSE = "Pause";
 
   private static final String PACKAGE_BIDULES = "org.ldv.melun.sio.swingpac.etudiants";
 
@@ -75,13 +78,25 @@ public class FenetreMain extends JFrame implements ActionListener {
     menuBar.add(menuFichier);
     JMenu jeu = new JMenu("Jeu");
     jeu.setMnemonic(KeyEvent.VK_J);
+    
     JMenuItem mn = new JMenuItem("go", KeyEvent.VK_G);
     mn.setActionCommand(ACTION_GO);
+    
     // l'instance de cette fenêtre est à l'écoute d'une action sur ce menu
     mn.addActionListener(this);
     jeu.add(mn);
+    
     menuBar.add(jeu);
-
+    
+    JMenu Option = new JMenu("Option");
+    jeu.setMnemonic(KeyEvent.VK_O);
+    JMenuItem test = new JMenuItem("Pause", KeyEvent.VK_P);
+    test.setActionCommand(ACTION_PAUSE);
+    
+    test.addActionListener(this);
+    Option.add(test);
+    
+    menuBar.add(Option);
     // TODO : ajouter une commande Pause qui stoppe le timer de tous les objets
     // Bidule.
 
@@ -137,6 +152,9 @@ public class FenetreMain extends JFrame implements ActionListener {
     if (action.equals(ACTION_QUITTER)) {
       System.exit(0);
     } else if (action.equals(ACTION_GO)) {
+      go();
+    }
+    else if (action.equals(ACTION_PAUSE)) {
       go();
     }
   }
