@@ -157,7 +157,7 @@ public class FenetreMain extends JFrame implements ActionListener {
 	          bidulesPresent.add((Bidule) obj);
 	      }
 	    }
-	    if 
+	    
 	    
 	    for (Bidule bidules : bidulesPresent){
 	    	bidules.stop();
