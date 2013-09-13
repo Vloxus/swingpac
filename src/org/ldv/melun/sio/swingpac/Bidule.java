@@ -171,6 +171,7 @@ public class Bidule extends JPanel {
   private void manageCollisions() {
     // ai-je touché d'autres bidules ?
     List<Bidule> bidules = getCollisions();
+    
     for (Bidule bidule : bidules) {
       if (bidule.isGoDown()
           && bidule.getY() + bidule.getHeight() >= this.getY())
@@ -219,11 +220,12 @@ public class Bidule extends JPanel {
    * @param biduleImpacteur
    *          l'objet qui vient de rentrer en collision avec moi
    */
+  int cpt=0;
   public void tuEstouchePar(Bidule biduleImpacteur) {
     // je retrécis
     this.setBounds(getX() + incX, getY() + incY, getWidth() - 1,
         getHeight() - 1);
-
+    cpt++;
     // TODO (plus difficile) : augmenter la taille de biduleImpacteur (dans la
     // limite de la taille initiale)
     // si celui-ci a touché au moins 5 autres bidules
@@ -234,6 +236,7 @@ public class Bidule extends JPanel {
       // sucide...
       this.stop();
       System.out.println("Je meurs :-(   " + this.name);
+      System.out.println("Nombres d'impacts " +cpt);
       getParent().remove(this);
     }
 
