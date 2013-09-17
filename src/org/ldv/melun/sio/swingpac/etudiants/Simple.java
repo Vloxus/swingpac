@@ -21,6 +21,9 @@ public class Simple extends Bidule {
   protected void doAfterImpactByOther() {
     super.doAfterImpactByOther();
   }
+  
+ 
+  }
 
   
-}
+
